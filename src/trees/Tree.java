@@ -18,6 +18,9 @@ public class Tree {
     public static void main(String[] args) {
         sc = new Scanner(System.in);
         Node root = createTree();
+
+        System.out.println("Height: " + height(root));
+
         inOrder(root);
         System.out.println();
         preOrder(root);
@@ -42,6 +45,13 @@ public class Tree {
         root.right = createTree();
 
         return root;
+    }
+
+    public static int height(Node root) {
+        if (root == null) return -1;
+        if (root.left == null && root.right == null) return 0;
+
+        return (Math.max(height(root.left), height(root.right)) + 1);
     }
 
     static void inOrder(Node root) {
